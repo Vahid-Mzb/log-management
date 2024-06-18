@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 15s # By default, scrape targets every 15 seconds.
+  evaluation_interval: 15s
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - "alertmanager:9093"
+
+rule_files:
+  - "alert.rules.yml" # Include this line to load your alert rules
+
+scrape_configs:
+  - job_name: "webserver"
+    static_configs:
+      - targets: ["webserver:8888"]

@@ -1,0 +1,30 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  group_by: ["alertname"]
+  group_wait: 0s
+  group_interval: 10s
+  repeat_interval: 1h
+  receiver: "telegram"
+  routes:
+    - match:
+        alertname: HighUnauthorizedAttempts
+      receiver: "telegram_unauthorized"
+
+receivers:
+  - name: "telegram"
+    telegram_configs:
+      - send_resolved: true
+        api_url: "https://api.telegram.org"
+        bot_token: "7446780992:AAF0AqisQeT4irhW6B4R4ENmcUocQcZDMcA"
+        chat_id: 386048106
+        message: "Alert: High error rate 500 has been detected in the application. Check immediately."
+
+  - name: "telegram_unauthorized"
+    telegram_configs:
+      - send_resolved: true
+        api_url: "https://api.telegram.org"
+        bot_token: "7446780992:AAF0AqisQeT4irhW6B4R4ENmcUocQcZDMcA"
+        chat_id: 386048106
+        message: "Alert: High number of unauthorized access attempts detected. Please investigate."
