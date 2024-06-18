@@ -99,7 +99,7 @@ curl localhost/test-error
 
 ![telegram](https://i.imgur.com/SAtO2DQ.png)
 
-### Monitoring with Prometheus
+### **Monitoring with Prometheus**
 
 Access Prometheus by navigating to `http://localhost:9090`.
 
@@ -107,10 +107,13 @@ Access Prometheus by navigating to `http://localhost:9090`.
 
 Shows the Prometheus Metrics Explorer, which lists various metrics that Prometheus is configured to monitor. These metrics include HTTP requests, Node.js specific metrics like event loop lag, garbage collection details, and memory usage.
 
+### **Alert panel**
+
 ![active](https://i.imgur.com/YPLDuby.png)
 
 The Alerts panel in Prometheus before any alerts are triggered. It shows that there are configurations for alerts such as `HighErrorRate500` and `HighUnauthorizedAttempts`, but none are active.
 
+## **The alert panel after firing **
 ![firing](https://i.imgur.com/dEFnv0J.png)
 
 After triggering an error by making a request to `localhost/test-error`, the Alerts panel updates to show that the `HighErrorRate500` is firing.
